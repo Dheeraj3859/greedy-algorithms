@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool comp(const pair<int,int>&a,const pair<int,int>&b)
+{
+	return a.second<b.second;
+}
+int main()
+{
+	vector<pair<int,int>> vect;
+	int n;
+	cin>>n;
+	for(int i=0;i<n;i++)
+	{
+		int x,y;
+		cout<<"Enter the start time and enter the end time"<<endl;
+		cin>>x>>y;
+		vect.push_back(make_pair(x,y));
+	}
+	sort(vect.begin(),vect.end(),comp);
+	cout<<vect[0].first<<" ";
+	int i=0;
+	int count=1;
+	for(int j=1;j<n;j++)
+	{
+		if(vect[i].second<=vect[j].first)
+		{
+			cout<<vect[j].first<<" ";
+			i=j;
+			count++;
+		}
+	}
+	cout<<endl;
+	cout<<"he can complete "<<count<<" activites at max";
+	return 0;
+}
